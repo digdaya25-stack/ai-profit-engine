@@ -1,38 +1,137 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
+    <meta charset="UTF-8">
     <title>AI Profit Engine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <style>
-        body { font-family: Arial; background:#f5f5f5; padding:20px; }
-        .box { background:#fff; padding:20px; border-radius:8px; max-width:800px; margin:auto; }
-        textarea, input, select { width:100%; margin-bottom:10px; padding:8px; }
-        button { padding:10px; width:100%; background:#000; color:#fff; border:none; }
-        pre { white-space:pre-wrap; background:#eee; padding:15px; }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        p.subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 15px;
+            display: block;
+        }
+
+        select, input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        small {
+            color: #777;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 25px;
+            background: #000;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #333;
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f9fafb;
+            border-left: 5px solid #000;
+            white-space: pre-wrap;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #999;
+        }
     </style>
 </head>
+
 <body>
 
-<div class="box">
-    <h2>🚀 AI Profit Engine (MVP)</h2>
+<div class="container">
+    <h1>🚀 AI Profit Engine</h1>
+    <p class="subtitle">
+        Tool AI untuk bantu jualan, konten, dan riset produk secara instan
+    </p>
 
     <form method="post" action="/generate">
-        <select name="tool">
-            <option value="prompt_jualan">1. Prompt Jualan</option>
-            <option value="auto_konten">2. Auto Konten</option>
-            <option value="auto_desain">3. Auto Desain</option>
-            <option value="riset_produk">4. Auto Riset Produk</option>
+
+        <label>Pilih Tool</label>
+        <select name="tool" required>
+            <option value="prompt_jualan">1️⃣ Prompt Jualan</option>
+            <option value="auto_konten">2️⃣ Ide Konten Otomatis</option>
+            <option value="auto_desain">3️⃣ Konsep Desain Promosi</option>
+            <option value="riset_produk">4️⃣ Riset Produk & Market</option>
         </select>
 
-        <input name="input1" placeholder="Input 1 (Produk / Niche)">
-        <input name="input2" placeholder="Input 2 (Target / Platform)">
-        <input name="input3" placeholder="Input 3 (Masalah / Tujuan / Budget)">
-        <input name="input4" placeholder="Input 4 (Platform / Gaya / Tone)">
+        <label>Input 1 – Produk / Niche</label>
+        <input type="text" name="input1" placeholder="Contoh: Ebook Affiliate, Skincare, UMKM Kuliner">
+        <small>Isi dengan produk atau niche utama</small>
 
-        <button type="submit">Generate</button>
+        <label>Input 2 – Target / Platform</label>
+        <input type="text" name="input2" placeholder="Contoh: Ibu rumah tangga, Instagram, TikTok">
+        <small>Siapa targetnya atau dipakai di platform apa</small>
+
+        <label>Input 3 – Masalah / Tujuan / Budget</label>
+        <input type="text" name="input3" placeholder="Contoh: Susah closing, Mau jualan online">
+        <small>Masalah utama market atau tujuan bisnis</small>
+
+        <label>Input 4 – Gaya / Tone / Platform</label>
+        <input type="text" name="input4" placeholder="Contoh: Santai, Hard selling, Edukatif">
+        <small>Gaya bahasa atau tone konten</small>
+
+        <button type="submit">✨ Generate Sekarang</button>
     </form>
 
-    <h3>Hasil:</h3>
-    <pre>{{ result }}</pre>
+    {% if result %}
+    <div class="result">
+        <strong>📌 Hasil AI:</strong><br><br>
+        {{ result }}
+    </div>
+    {% endif %}
+
+    <div class="footer">
+        © AI Profit Engine – MVP
+    </div>
 </div>
 
 </body>
